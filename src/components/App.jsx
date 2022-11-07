@@ -17,7 +17,7 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [pages, setPages] = useState(0);
 
-  useEffect(async () => {
+  useEffect(() => {
     // const { searchPhotos, page } = this.state;
     // if (
     //   prevState.page !== this.state.page ||
@@ -28,7 +28,7 @@ export const App = () => {
     try {
       // this.setState({ isLoading: true });
       setIsLoading(true);
-      const { images, pages } = await fetchPhotos({ searchPhotos, page });
+      const { images, pages } = fetchPhotos({ searchPhotos, page });
       if (images.length === 0) {
         toast.info(
           'Sorry, there are no images matching your search query. Please try again.'
