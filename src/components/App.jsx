@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -146,12 +146,12 @@ export const App = () => {
 //   }
 // }
 
-App.propTypes = {
-  state: PropTypes.shape({
-    photos: PropTypes.array.isRequired,
-    searchPhotos: PropTypes.string.isRequired,
-    page: PropTypes.number.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    pages: PropTypes.number.isRequired,
-  }).isRequired,
-};
+// App.propTypes = {
+//   state: PropTypes.shape({
+//     photos: PropTypes.array.isRequired,
+//     searchPhotos: PropTypes.string.isRequired,
+//     page: PropTypes.number.isRequired,
+//     isLoading: PropTypes.bool.isRequired,
+//     pages: PropTypes.number.isRequired,
+//   }).isRequired,
+// };
