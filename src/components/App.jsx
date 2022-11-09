@@ -26,30 +26,33 @@ export const App = () => {
     // )
 
     console.log('componentDidUpdate... ');
-    try {
-      // this.setState({ isLoading: true });
-      setIsLoading(true);
-      const { images, pages } = fetchPhotos({ searchPhotos, page });
-      if (images.length === 0) {
-        toast.info(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
-        return;
+    const getImages = async () => {
+      try {
+        // this.setState({ isLoading: true });
+        setIsLoading(true);
+        const { images, pages } = await fetchPhotos({ searchPhotos, page });
+        if (images.length === 0) {
+          toast.info(
+            'Sorry, there are no images matching your search query. Please try again.'
+          );
+          return;
+        }
+        if (page === 1) {
+          // this.setState({ pages: pages });
+          setPages(pages);
+        }
+        // this.setState(prevState => ({
+        //   photos: [...prevState.photos, ...images],
+        // }));
+        setPhotos(prevPhotos => [...prevPhotos, ...images]);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        // this.setState({ isLoading: false });
+        setIsLoading(false);
       }
-      if (page === 1) {
-        // this.setState({ pages: pages });
-        setPages(pages);
-      }
-      // this.setState(prevState => ({
-      //   photos: [...prevState.photos, ...images],
-      // }));
-      setPhotos(prevPhotos => [...prevPhotos, images]);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      // this.setState({ isLoading: false });
-      setIsLoading(false);
-    }
+    };
+    getImages();
   }, [page, searchPhotos]);
 
   const handleFormSubmit = searchPhotos => {
