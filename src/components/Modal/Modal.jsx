@@ -24,7 +24,7 @@ export const Modal = ({ onClose, children }) => {
     return () => {
       window.removeEventListener('keydown', handleEscClose);
     };
-  }, []);
+  }, [onClose]);
 
   return createPortal(
     <div className="Overlay" onClick={handleBackdropClickClose}>
