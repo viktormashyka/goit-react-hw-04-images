@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 // import PropTypes from 'prop-types';
@@ -10,7 +11,7 @@ import { fetchPhotos } from 'api';
 import { Loader } from './Loader/Loader';
 import '../css/styles.css';
 
-export const App = () => {
+export const App = ({ onSubmit }) => {
   const [photos, setPhotos] = useState([]);
   const [searchPhotos, setSearchPhotos] = useState('');
   const [page, setPage] = useState(1);
