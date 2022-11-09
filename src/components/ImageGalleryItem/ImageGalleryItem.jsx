@@ -1,26 +1,14 @@
-// import React, { Component } from 'react';
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Modal } from 'components/Modal/Modal';
 
 export const ImageGalleryItem = ({ photos, onClose }) => {
   const [showModal, setShowModal] = useState(false);
-  // state = {
-  //   showModal: false,
-  // };
 
   const toggleModal = () => {
-    // this.setState(({ showModal }) => ({
-    //   showModal: !showModal,
-    // }));
-    // console.log('toggleModal...');
     setShowModal(({ showModal }) => !showModal);
   };
-
-  // const { showModal } = this.state;
-  // const { photos } = this.props;
-  // const { toggleModal } = this;
 
   return photos.map(({ id, largeImageURL, webformatURL, tags }) => (
     <li className="ImageGalleryItem" key={id}>
@@ -39,6 +27,11 @@ export const ImageGalleryItem = ({ photos, onClose }) => {
       )}
     </li>
   ));
+};
+
+ImageGalleryItem.propTypes = {
+  photos: PropTypes.array.isRequired,
+  showModal: PropTypes.bool.isRequired,
 };
 
 // ImageGalleryItem.propTypes = {
@@ -81,7 +74,3 @@ export const ImageGalleryItem = ({ photos, onClose }) => {
 //     ));
 //   }
 // }
-
-// ImageGalleryItem.propTypes = {
-//   state: PropTypes.shape({ showModal: PropTypes.bool.isRequired }).isRequired,
-// };

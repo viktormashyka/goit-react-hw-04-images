@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '29782836-0cb6e5c5167e525a8102df66c';
@@ -27,4 +28,9 @@ const getNormalizedImages = images => {
     }
   );
   return normalizedData;
+};
+
+fetchPhotos.propTypes = {
+  searchPhotos: PropTypes.array.isRequired,
+  page: PropTypes.number.isRequired,
 };

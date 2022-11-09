@@ -1,6 +1,6 @@
-// import React, { Component } from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -9,7 +9,6 @@ export const Modal = ({ onClose, children }) => {
     const handleEscClose = evt => {
       if (evt.code === 'Escape') {
         onClose();
-        // this.props.onClose();
       }
     };
 
@@ -22,7 +21,6 @@ export const Modal = ({ onClose, children }) => {
   const handleBackdropClickClose = evt => {
     if (evt.currentTarget === evt.target) {
       onClose();
-      // this.props.onClose();
     }
   };
 
@@ -32,6 +30,11 @@ export const Modal = ({ onClose, children }) => {
     </div>,
     modalRoot
   );
+};
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 // export class Modal extends Component {

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -19,16 +18,9 @@ export const App = () => {
   const [pages, setPages] = useState(0);
 
   useEffect(() => {
-    // const { searchPhotos, page } = this.state;
-    // if (
-    //   prevState.page !== this.state.page ||
-    //   prevState.searchPhotos !== this.state.searchPhotos
-    // )
-
     console.log('componentDidUpdate... ');
     const getImages = async () => {
       try {
-        // this.setState({ isLoading: true });
         setIsLoading(true);
         const { images, pages } = await fetchPhotos({ searchPhotos, page });
         if (images.length === 0) {
@@ -38,17 +30,12 @@ export const App = () => {
           return;
         }
         if (page === 1) {
-          // this.setState({ pages: pages });
           setPages(pages);
         }
-        // this.setState(prevState => ({
-        //   photos: [...prevState.photos, ...images],
-        // }));
         setPhotos(prevPhotos => [...prevPhotos, ...images]);
       } catch (error) {
         console.log(error);
       } finally {
-        // this.setState({ isLoading: false });
         setIsLoading(false);
       }
     };
@@ -56,20 +43,15 @@ export const App = () => {
   }, [page, searchPhotos]);
 
   const handleFormSubmit = searchPhotos => {
-    // this.setState({ searchPhotos, page: 1, photos: [] });
     setSearchPhotos(searchPhotos);
     setPage(1);
     setPhotos([]);
   };
 
   const loadMore = evt => {
-    //  this.setState(prevState => ({ page: prevState.page + 1 }));
     setPage(prevPage => prevPage + 1);
-    // console.log('this.state, ', this.state);
   };
 
-  // const { photos, isLoading, pages, page } = this.state;
-  // const { loadMore, handleFormSubmit } = this;
   return (
     <div className="App">
       <Searchbar onSubmit={handleFormSubmit} />
@@ -79,6 +61,14 @@ export const App = () => {
       <ToastContainer autoClose={2000} />
     </div>
   );
+};
+
+App.propTypes = {
+  photos: PropTypes.array.isRequired,
+  searchPhotos: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  pages: PropTypes.number.isRequired,
 };
 
 // export class App extends Component {
@@ -149,13 +139,3 @@ export const App = () => {
 //     );
 //   }
 // }
-
-// App.propTypes = {
-//   state: PropTypes.shape({
-//     photos: PropTypes.array.isRequired,
-//     searchPhotos: PropTypes.string.isRequired,
-//     page: PropTypes.number.isRequired,
-//     isLoading: PropTypes.bool.isRequired,
-//     pages: PropTypes.number.isRequired,
-//   }).isRequired,
-// };

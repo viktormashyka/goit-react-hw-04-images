@@ -1,13 +1,11 @@
-// import { Component } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const Searchbar = ({ onSubmit }) => {
   const [searchPhotos, setSearchPhotos] = useState('');
 
   const handleChange = evt => {
-    // this.setState({ searchPhotos: evt.currentTarget.value.toLowerCase() });
     setSearchPhotos(evt.currentTarget.value.toLowerCase());
   };
 
@@ -18,17 +16,6 @@ export const Searchbar = ({ onSubmit }) => {
       return toast.info('Input search name please ...');
     }
     onSubmit(searchPhotos);
-    // this.props.onSubmit({ ...this.state });
-    // this.props.onSubmit(
-    //   this.state.photos,
-    //   this.state.searchPhotos,
-    //   this.state.page,
-    //   this.state.per_page
-    // );
-    // console.log('handleSubmit... searchPhotos, ', this.state.searchPhotos);
-
-    // this.reset({ searchPhotos });
-    // this.setState({ searchPhotos: '' });
 
     setSearchPhotos('');
   };
@@ -52,6 +39,10 @@ export const Searchbar = ({ onSubmit }) => {
       </form>
     </header>
   );
+};
+
+Searchbar.propTypes = {
+  searchPhotos: PropTypes.string.isRequired,
 };
 
 // export class Searchbar extends Component {
@@ -111,9 +102,3 @@ export const Searchbar = ({ onSubmit }) => {
 //     );
 //   }
 // }
-
-// Searchbar.propTypes = {
-//   state: PropTypes.shape({
-//     searchPhotos: PropTypes.string.isRequired,
-//   }).isRequired,
-// };

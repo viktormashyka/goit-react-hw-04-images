@@ -1,11 +1,8 @@
-// import React, { Component } from 'react';
-
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export const ImageGallery = ({ photos, onClose }) => {
-  // const { photos } = this.props;
   return (
     <div>
       <ul className="ImageGallery">
@@ -13,6 +10,10 @@ export const ImageGallery = ({ photos, onClose }) => {
       </ul>
     </div>
   );
+};
+
+ImageGallery.propTypes = {
+  photos: PropTypes.array.isRequired,
 };
 
 // export class ImageGallery extends Component {
