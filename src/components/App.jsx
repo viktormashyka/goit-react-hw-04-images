@@ -11,7 +11,7 @@ import { fetchPhotos } from 'api';
 import { Loader } from './Loader/Loader';
 import '../css/styles.css';
 
-export const App = ({ onSubmit }) => {
+export const App = () => {
   const [photos, setPhotos] = useState([]);
   const [searchPhotos, setSearchPhotos] = useState('');
   const [page, setPage] = useState(1);
@@ -52,9 +52,9 @@ export const App = ({ onSubmit }) => {
     }
   }, [page, searchPhotos]);
 
-  const handleFormSubmit = ({ searchPhotos, page }) => {
+  const handleFormSubmit = searchPhotos => {
     // this.setState({ searchPhotos, page: 1, photos: [] });
-    setSearchPhotos();
+    setSearchPhotos(searchPhotos);
     setPage(1);
     setPhotos([]);
   };

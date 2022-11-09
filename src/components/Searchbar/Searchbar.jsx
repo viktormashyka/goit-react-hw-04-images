@@ -17,7 +17,7 @@ export const Searchbar = ({ onSubmit }) => {
     if (searchPhotos.trim() === '') {
       return toast.info('Input search name please ...');
     }
-    onSubmit({ ...searchPhotos });
+    onSubmit(searchPhotos);
     // this.props.onSubmit({ ...this.state });
     // this.props.onSubmit(
     //   this.state.photos,

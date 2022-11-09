@@ -5,13 +5,6 @@ import { createPortal } from 'react-dom';
 const modalRoot = document.querySelector('#modal-root');
 
 export const Modal = ({ onClose, children }) => {
-  const handleBackdropClickClose = evt => {
-    if (evt.currentTarget === evt.target) {
-      onClose();
-      // this.props.onClose();
-    }
-  };
-
   useEffect(() => {
     const handleEscClose = evt => {
       if (evt.code === 'Escape') {
@@ -25,6 +18,13 @@ export const Modal = ({ onClose, children }) => {
       window.removeEventListener('keydown', handleEscClose);
     };
   }, [onClose]);
+
+  const handleBackdropClickClose = evt => {
+    if (evt.currentTarget === evt.target) {
+      onClose();
+      // this.props.onClose();
+    }
+  };
 
   return createPortal(
     <div className="Overlay" onClick={handleBackdropClickClose}>
