@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 
 import { Modal } from 'components/Modal/Modal';
 
-export const ImageGalleryItem = ({ photos, onClose }) => {
+export const ImageGalleryItem = ({ photo }) => {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
-    // setShowModal(({ showModal }) => !showModal);
     setShowModal(!showModal);
   };
-
-  return photos.map(({ id, largeImageURL, webformatURL, tags }) => (
-    <li className="ImageGalleryItem" key={id}>
+  const { largeImageURL, webformatURL, tags } = photo;
+  return (
+    <li className="ImageGalleryItem">
       <img
         className="ImageGalleryItem-image"
         src={webformatURL}
@@ -27,7 +26,7 @@ export const ImageGalleryItem = ({ photos, onClose }) => {
         </Modal>
       )}
     </li>
-  ));
+  );
 };
 
 ImageGalleryItem.propTypes = {

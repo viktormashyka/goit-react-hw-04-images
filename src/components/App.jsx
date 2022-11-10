@@ -19,6 +19,7 @@ export const App = () => {
 
   useEffect(() => {
     console.log('componentDidUpdate... ');
+    if (!searchPhotos) return;
     const getImages = async () => {
       try {
         setIsLoading(true);

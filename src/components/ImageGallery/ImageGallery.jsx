@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export const ImageGallery = ({ photos, onClose }) => {
+export const ImageGallery = ({ photos }) => {
   return (
     <div>
       <ul className="ImageGallery">
-        <ImageGalleryItem photos={photos} />
+        {photos.map(item => (
+          <ImageGalleryItem key={item.id} photo={item} />
+        ))}
       </ul>
     </div>
   );
