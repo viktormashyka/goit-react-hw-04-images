@@ -7,7 +7,8 @@ export const ImageGalleryItem = ({ photos, onClose }) => {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
-    setShowModal(({ showModal }) => !showModal);
+    // setShowModal(({ showModal }) => !showModal);
+    setShowModal(!showModal);
   };
 
   return photos.map(({ id, largeImageURL, webformatURL, tags }) => (
